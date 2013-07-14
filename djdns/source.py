@@ -59,10 +59,11 @@ class DJSource(Resolver):
 
     def get(self, request, root = None):
         root = root or self.root
+        name = request.name
 
         for branch in root['branches']:
             selector = branch['selector']
-            if re.search(selector, request):
+            if re.search(selector, name):
                 return self.resolve_from(request, branch)
         return []
 

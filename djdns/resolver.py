@@ -3,9 +3,9 @@ class Resolver(object):
     Taxonomical class for objects that fulfill Resolver interface.
     '''
 
-    def get(self, domain_name):
+    def get(self, request):
         '''
-        Takes domain name, returns array of pymads records.
+        Takes request, returns array of pymads records.
         '''
         raise NotImplementedError('Resolver subclass must define get()')
 
@@ -18,5 +18,5 @@ class ResolverWrapper(Resolver):
     def __init__(self, source):
         self.source = source
 
-    def get(self, domain_name):
-        return self.source.get(domain_name)
+    def get(self, request):
+        return self.source.get(request)
